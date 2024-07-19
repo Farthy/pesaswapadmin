@@ -29,7 +29,7 @@ export function TotalCustomers({ diff, trend, sx, value }: TotalCustomersProps):
               <Typography color="text.secondary" variant="overline">
                 Total Customers
               </Typography>
-              <Typography variant="h4">{value}</Typography>
+              <Typography variant="h4">300</Typography>
             </Stack>
             <Avatar sx={{ backgroundColor: 'var(--mui-palette-success-main)', height: '56px', width: '56px' }}>
               <UsersIcon fontSize="var(--icon-fontSize-lg)" />

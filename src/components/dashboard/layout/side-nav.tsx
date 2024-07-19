@@ -35,7 +35,7 @@ export function SideNav(): React.JSX.Element {
         '--NavItem-icon-color': 'var(--mui-palette-neutral-400)',
         '--NavItem-icon-active-color': 'var(--mui-palette-primary-contrastText)',
         '--NavItem-icon-disabled-color': 'var(--mui-palette-neutral-600)',
-        bgcolor: 'var(--SideNav-background)',
+        bgcolor: '#d6e4e4',
         color: 'var(--SideNav-color)',
         display: { xs: 'none', lg: 'flex' },
         flexDirection: 'column',
@@ -51,26 +51,25 @@ export function SideNav(): React.JSX.Element {
       }}
     >
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Box component={RouterLink} href={paths.home} sx={{ display: 'inline-flex' }}>
-          <Logo color="light" height={32} width={122} />
+        <Box component={RouterLink} href={paths.home} sx={{ display: 'inline-flex', text: 'white' }}>
+          <Logo color="dark" height={100} width={200} />
         </Box>
         <Box
           sx={{
             alignItems: 'center',
-            backgroundColor: 'var(--mui-palette-neutral-950)',
-            border: '1px solid var(--mui-palette-neutral-700)',
-            borderRadius: '12px',
+            backgroundColor: '#d6e4e4',
+          
             cursor: 'pointer',
             display: 'flex',
             p: '4px 12px',
           }}
         >
           <Box sx={{ flex: '1 1 auto' }}>
-            <Typography color="var(--mui-palette-neutral-400)" variant="body2">
+            <Typography color="black" variant="body2">
               Workspace
             </Typography>
-            <Typography color="inherit" variant="subtitle1">
-              Devias
+            <Typography color="black" variant="subtitle1">
+              pesaswap
             </Typography>
           </Box>
           <CaretUpDownIcon />
@@ -81,16 +80,16 @@ export function SideNav(): React.JSX.Element {
         {renderNavItems({ pathname, items: navItems })}
       </Box>
       <Divider sx={{ borderColor: 'var(--mui-palette-neutral-700)' }} />
-      <Stack spacing={2} sx={{ p: '12px' }}>
-        <div>
+      {/* <Stack spacing={2} sx={{ p: '12px' }}> */}
+        {/* <div>
           <Typography color="var(--mui-palette-neutral-100)" variant="subtitle2">
             Need more features?
           </Typography>
           <Typography color="var(--mui-palette-neutral-400)" variant="body2">
             Check out our Pro solution template.
           </Typography>
-        </div>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        </div> */}
+        {/* <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <Box
             component="img"
             alt="Pro version"
@@ -109,7 +108,7 @@ export function SideNav(): React.JSX.Element {
         >
           Pro version
         </Button>
-      </Stack>
+      </Stack> */}
     </Box>
   );
 }
@@ -152,7 +151,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
         sx={{
           alignItems: 'center',
           borderRadius: 1,
-          color: 'var(--NavItem-color)',
+          color: 'black',
           cursor: 'pointer',
           display: 'flex',
           flex: '0 0 auto',

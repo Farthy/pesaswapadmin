@@ -43,7 +43,7 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
           '--NavItem-icon-color': 'var(--mui-palette-neutral-400)',
           '--NavItem-icon-active-color': 'var(--mui-palette-primary-contrastText)',
           '--NavItem-icon-disabled-color': 'var(--mui-palette-neutral-600)',
-          bgcolor: 'var(--MobileNav-background)',
+          bgcolor: '#02555b',
           color: 'var(--MobileNav-color)',
           display: 'flex',
           flexDirection: 'column',
@@ -64,7 +64,7 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
         <Box
           sx={{
             alignItems: 'center',
-            backgroundColor: 'var(--mui-palette-neutral-950)',
+            backgroundColor: '#02555b',
             border: '1px solid var(--mui-palette-neutral-700)',
             borderRadius: '12px',
             cursor: 'pointer',
@@ -77,7 +77,7 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
               Workspace
             </Typography>
             <Typography color="inherit" variant="subtitle1">
-              Devias
+              Pesaswap
             </Typography>
           </Box>
           <CaretUpDownIcon />
@@ -88,35 +88,6 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
         {renderNavItems({ pathname, items: navItems })}
       </Box>
       <Divider sx={{ borderColor: 'var(--mui-palette-neutral-700)' }} />
-      <Stack spacing={2} sx={{ p: '12px' }}>
-        <div>
-          <Typography color="var(--mui-palette-neutral-100)" variant="subtitle2">
-            Need more features?
-          </Typography>
-          <Typography color="var(--mui-palette-neutral-400)" variant="body2">
-            Check out our Pro solution template.
-          </Typography>
-        </div>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Box
-            component="img"
-            alt="Pro version"
-            src="/assets/devias-kit-pro.png"
-            sx={{ height: 'auto', width: '160px' }}
-          />
-        </Box>
-        <Button
-          component="a"
-          endIcon={<ArrowSquareUpRightIcon fontSize="var(--icon-fontSize-md)" />}
-          fullWidth
-          href="https://material-kit-pro-react.devias.io/"
-          sx={{ mt: 2 }}
-          target="_blank"
-          variant="contained"
-        >
-          Pro version
-        </Button>
-      </Stack>
     </Drawer>
   );
 }

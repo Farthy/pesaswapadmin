@@ -75,9 +75,9 @@ export function CustomersTable({
               </TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
-              <TableCell>Location</TableCell>
+              <TableCell>Modules</TableCell>
               <TableCell>Phone</TableCell>
-              <TableCell>Signed Up</TableCell>
+              
             </TableRow>
           </TableHead>
           <TableBody>
