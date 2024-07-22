@@ -8,6 +8,8 @@ import CardHeader from '@mui/material/CardHeader';
 import Box from '@mui/material/Box';
 import ApexChart from 'react-apexcharts';
 import merge from 'lodash/merge';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 // Styled Chart component
 const Chart = styled(ApexChart)(({ theme }) => ({
@@ -173,14 +175,14 @@ function useChart(options) {
 }
 
 export default function Page(): React.JSX.Element {
+  const [transactionMethod, setTransactionMethod] = useState([]);
   const theme = useTheme();
   const chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     series: [
       { name: 'Revenue', type: 'line', data: [30, 40, 35, 50, 49, 60, 70, 91, 125, 130, 145, 150] },
-      { name: 'Sales', type: 'line', data: [20, 30, 25, 40, 35, 50, 60, 81, 115, 120, 135, 140] },
     ],
-    colors: ['#2196F3', '#4CAF50'],
+    colors: ['#02555b'],
   };
 
   const chartOptions = useChart({
@@ -191,15 +193,27 @@ export default function Page(): React.JSX.Element {
       categories: chartData.labels,
     },
   });
+useEffect(()=>{
+  const fetchTransactionMethods = async()=>{
+    try{
+        const response = await axios.get('https://erp-dev.pesaswap.com/api/method/pesaswap.services.rest.get_total_transactions_by_method');
+        console.log("Transaction Methods", response.data.message);
+        setTransactionMethod(response.data.message);
 
+    } catch(err){
+        console.log(err.message);
+    }
+};
+fetchTransactionMethods();
+},[transactionMethod])
   return (
     <Grid container spacing={3}>
       <Grid lg={4} md={6} xs={12}>
-        <Traffic chartSeries={[63, 15, 22]} labels={['Desktop', 'Tablet', 'Phone']} sx={{ height: '100%' }} />
+        <Traffic chartSeries={[transactionMethod.mpesa,transactionMethod.mtn,transactionMethod.iveri,12]} labels={['Mpesa', 'Momo', 'Iveri','Airtel' ]} sx={{ height: '100%' }} />
       </Grid>
       <Grid lg={8} md={6} xs={12}>
         <Card>
-          <CardHeader title="Revenue and Sales" subheader="Monthly Data" />
+          <CardHeader title="Revenue" subheader="Monthly Data" />
           <Box sx={{ p: 3, pb: 1 }}>
             <Chart
               dir="ltr"

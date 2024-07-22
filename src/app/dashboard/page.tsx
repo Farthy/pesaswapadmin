@@ -57,7 +57,7 @@ export default function Page(): React.JSX.Element {
         const fetchLatestModules = async()=>{
             try{
                 const response = await axios.get('https://erp-dev.pesaswap.com/api/method/pesaswap.services.rest.get_sales_per_module');
-               // console.log("Latest Modules", response.data.message.sales_per_module);
+                console.log("Latest Modules", response.data.message.sales_per_module);
                 setLatestModules(response.data.message.sales_per_module);
 
             } catch(err){
@@ -71,7 +71,7 @@ export default function Page(): React.JSX.Element {
       }, []);
       console.log("123456", revenue);
       console.log("farthy",transactionMethod.mpesa);
-      console.log("latestModules",latestModules);
+      console.log("latestModules",latestModules[0]);
   return (
     <Grid container spacing={3}>
       <Grid lg={3} sm={6} xs={12}>
@@ -93,7 +93,7 @@ export default function Page(): React.JSX.Element {
         />
       </Grid>
       <Grid lg={4} md={6} xs={12}>
-        <Traffic chartSeries={[transactionMethod.mpesa,transactionMethod.mtn,transactionMethod.iveri,0]} labels={['Mpesa', 'Momo', 'Iveri','Airtel' ]} sx={{ height: '100%' }} />
+        <Traffic chartSeries={[transactionMethod.mpesa,transactionMethod.mtn,transactionMethod.iveri,12]} labels={['Mpesa', 'Momo', 'Iveri','Airtel' ]} sx={{ height: '100%' }} />
       </Grid>
       <Grid lg={4} md={6} xs={12}>
         <LatestProducts
