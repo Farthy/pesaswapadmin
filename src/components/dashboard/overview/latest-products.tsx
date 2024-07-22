@@ -40,11 +40,11 @@ export function LatestProducts({ products, sx }: LatestProductsProps): React.JSX
   console.log(titles);
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest Modules Sold" />
+      <CardHeader title="Highest Modules Sold" />
       <Divider />
       <List>
         {titles.map((product, index) => (
-          <ListItem divider={index < products.length - 1} key={product.id}>
+          <ListItem divider={index < products.length - 1} key={product}>
             <ListItemAvatar>
               {product.image ? (
                 <Box component="img" src={product.image} sx={{ borderRadius: 1, height: '48px', width: '48px' }} />

@@ -57,7 +57,7 @@ export default function Page(): React.JSX.Element {
         const fetchLatestModules = async()=>{
             try{
                 const response = await axios.get('https://erp-dev.pesaswap.com/api/method/pesaswap.services.rest.get_sales_per_module');
-                console.log("Latest Modules", response.data.message.sales_per_module);
+                console.log("Latest Modules", response?.data.message.sales_per_module);
                 setLatestModules(response.data.message.sales_per_module);
 
             } catch(err){
@@ -87,7 +87,6 @@ export default function Page(): React.JSX.Element {
         <Sales
           chartSeries={[
             { name: 'This year', data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20] },
-            { name: 'Last year', data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13] },
           ]}
           sx={{ height: '100%' }}
         />

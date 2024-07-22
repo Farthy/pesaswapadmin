@@ -167,14 +167,14 @@ function useChart(options) {
     },
     plotOptions: {
       bar: {
-        columnWidth: '16%',
+        columnWidth: '30%',
       },
     },
     responsive: [
       {
         breakpoint: theme.breakpoints.values.sm,
         options: {
-          plotOptions: { bar: { columnWidth: '40%' } },
+          plotOptions: { bar: { columnWidth: '80%' } },
         },
       },
       {
@@ -191,12 +191,12 @@ function useChart(options) {
 
 // Dummy data for chart
 const dummyData = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+  labels: ['E-Commerce', 'Selling', 'Buying', 'POS', 'Utilities','Accounts','Manufacturing','CRM','HR',"Expenses",'Support','Education'],
   series: [
-    { name: 'Series 1', type: 'line', data: [30, 40, 45, 50, 49] },
-    { name: 'Series 2', type: 'bar', data: [35, 45, 50, 55, 54] },
+
+    { name: 'Modules sold', type: 'bar', data: [35, 45, 50, 55, 54,40,51,59,76,70,20,15] },
   ],
-  colors: ['#2196F3', '#4CAF50'],
+  colors: ['#02555b'],
 };
 
 // Combined component
@@ -214,9 +214,9 @@ const AppWebsiteVisits = ({ title, subheader, chart = dummyData, ...other }) => 
 
   return (
     <Card {...other}>
-      <CardHeader title={title} subheader={subheader} />
+      <CardHeader title='Number Of Each Module Sold' subheader={subheader} />
 
-      <Box sx={{ p: 3, pb: 1 }}>
+      <Box sx={{ p: 1, pb: 1 }}>
         <Chart
           dir="ltr"
           type="line"
