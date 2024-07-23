@@ -28,48 +28,67 @@ export interface LatestProductsProps {
 }
 
 export function LatestProducts({ products, sx }: LatestProductsProps): React.JSX.Element {
-  console.log(products);
-  function getProductTitles(products) {
+  console.log("...........",products);
+  function getProductTitlesAndValues(products) {
     if (products.length === 0) return [];
-    const productObject = products[0];
-    return Object.keys(productObject);
-
+    
+    const titlesAndValues = [];
+    
+    products.forEach(product => {
+      Object.entries(product).forEach(([title, value]) => {
+        titlesAndValues.push({ title, value });
+      });
+    });
+    
+    return titlesAndValues;
   }
+ 
+  const titlesAndValues = getProductTitlesAndValues(products);
+  console.log(titlesAndValues);
   
-  const titles = getProductTitles(products);
-  console.log(titles);
   return (
     <Card sx={sx}>
       <CardHeader title="Highest Modules Sold" />
       <Divider />
       <List>
-        {titles.map((product, index) => (
-          <ListItem divider={index < products.length - 1} key={product}>
-            <ListItemAvatar>
-              {product.image ? (
-                <Box component="img" src={product.image} sx={{ borderRadius: 1, height: '48px', width: '48px' }} />
-              ) : (
-                <Box
-                  sx={{
-                    borderRadius: 1,
-                    backgroundColor: 'var(--mui-palette-neutral-200)',
-                    height: '48px',
-                    width: '48px',
-                  }}
-                />
-              )}
-            </ListItemAvatar>
-            <ListItemText
-              primary={product}
-              primaryTypographyProps={{ variant: 'subtitle1' }}
-              secondaryTypographyProps={{ variant: 'body2' }}
+      {titlesAndValues.map((product, index) => (
+        <ListItem  divider={index < titlesAndValues.length - 1} key={index}>
+          <ListItemAvatar>
+            <Box
+              sx={{
+                borderRadius: 1,
+                backgroundColor: 'var(--mui-palette-neutral-200)',
+                height: '48px',
+                width: '48px',
+              }}
             />
-            <IconButton edge="end">
-              <DotsThreeVerticalIcon weight="bold" />
-            </IconButton>
-          </ListItem>
-        ))}
-      </List>
+          </ListItemAvatar>
+          <ListItemText
+            primary={product.title}
+            primaryTypographyProps={{ variant: 'subtitle1' }}
+            
+          />
+           <ListItemText style={{
+              display: 'flex',
+              justifyContent: 'center', 
+              alignItems: 'center',
+              backgroundColor: '#095e63',
+              padding: '4px 8px', 
+              borderRadius: '24px',
+              textAlign: 'center',
+              maxWidth: '70px',
+              color: '#ffffff',
+              fontSize: '30px'
+            }}
+            primary={product.value}
+            secondaryTypographyProps={{ variant: 'body2' }}
+          />
+          <IconButton edge="end">
+            <DotsThreeVerticalIcon />
+          </IconButton>
+        </ListItem>
+      ))}
+    </List> 
       <Divider />
     </Card>
   );

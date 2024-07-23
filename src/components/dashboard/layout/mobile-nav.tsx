@@ -43,8 +43,8 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
           '--NavItem-icon-color': 'var(--mui-palette-neutral-400)',
           '--NavItem-icon-active-color': 'var(--mui-palette-primary-contrastText)',
           '--NavItem-icon-disabled-color': 'var(--mui-palette-neutral-600)',
-          bgcolor: '#02555b',
-          color: 'var(--MobileNav-color)',
+          bgcolor: '#d6e4e4',
+          color: 'black',
           display: 'flex',
           flexDirection: 'column',
           maxWidth: '100%',
@@ -59,12 +59,12 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
     >
       <Stack spacing={2} sx={{ p: 3 }}>
         <Box component={RouterLink} href={paths.home} sx={{ display: 'inline-flex' }}>
-          <Logo color="light" height={32} width={122} />
+          <Logo color="light" height={80} width={150} />
         </Box>
         <Box
           sx={{
             alignItems: 'center',
-            backgroundColor: '#02555b',
+            backgroundColor: '#d6e4e4',
             border: '1px solid var(--mui-palette-neutral-700)',
             borderRadius: '12px',
             cursor: 'pointer',
@@ -73,7 +73,7 @@ export function MobileNav({ open, onClose }: MobileNavProps): React.JSX.Element 
           }}
         >
           <Box sx={{ flex: '1 1 auto' }}>
-            <Typography color="var(--mui-palette-neutral-400)" variant="body2">
+            <Typography color="black" variant="body2">
               Workspace
             </Typography>
             <Typography color="inherit" variant="subtitle1">
@@ -130,7 +130,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
         sx={{
           alignItems: 'center',
           borderRadius: 1,
-          color: 'var(--NavItem-color)',
+          color: 'black',
           cursor: 'pointer',
           display: 'flex',
           flex: '0 0 auto',
@@ -144,7 +144,7 @@ function NavItem({ disabled, external, href, icon, matcher, pathname, title }: N
             color: 'var(--NavItem-disabled-color)',
             cursor: 'not-allowed',
           }),
-          ...(active && { bgcolor: 'var(--NavItem-active-background)', color: 'var(--NavItem-active-color)' }),
+          ...(active && { bgcolor: '#095e63', color: '#ffffff' }),
         }}
       >
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'center', flex: '0 0 auto' }}>
