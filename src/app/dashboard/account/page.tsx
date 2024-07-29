@@ -138,13 +138,13 @@ function useChart(options: ChartOptions): ApexOptions {
     },
     legend: {
       show: true,
-      fontSize: 13,
+      fontSize: '13px',
       position: 'top',
       horizontalAlign: 'right',
       markers: {
         radius: 12,
       },
-      fontWeight: 500,
+      fontWeight: '500',
       itemMargin: {
         horizontal: 8,
       },
