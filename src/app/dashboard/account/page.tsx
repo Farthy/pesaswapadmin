@@ -1,4 +1,5 @@
 "use client";
+
 import * as React from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Traffic } from '@/components/dashboard/overview/traffic';
@@ -134,8 +135,6 @@ function useChart(options: ChartOptions): ApexOptions {
       x: {
         show: true,
       },
-    }
-    
     },
     legend: {
       show: true,
@@ -222,7 +221,7 @@ export default function Page(): React.JSX.Element {
             <Chart
               dir="ltr"
               type="line"
-              series={chartData?.series}
+              series={chartData.series}
               options={chartOptions}
               width="100%"
               height={364}
