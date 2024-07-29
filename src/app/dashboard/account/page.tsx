@@ -25,7 +25,6 @@ const Chart = styled(ApexChart)(({ theme }) => ({
     '& .apexcharts-xaxistooltip': {
       borderColor: 'transparent',
       color: "#2596be",
-      boxShadow: theme.customShadows?.dropdown,
       borderRadius: theme.shape.borderRadius * 1.25,
       '&:before': {
         borderBottomColor: alpha(theme.palette.grey[500], 0.24),
