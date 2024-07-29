@@ -10,6 +10,7 @@ import ApexChart from 'react-apexcharts';
 import merge from 'lodash/merge';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ApexOptions } from 'apexcharts';
 
 // Styled Chart component
 const Chart = styled(ApexChart)(({ theme }) => ({
@@ -56,11 +57,14 @@ const Chart = styled(ApexChart)(({ theme }) => ({
   },
 }));
 
+// Define the type for chart options
+type ChartOptions = Partial<ApexOptions>;
+
 // Hook for chart options
-function useChart(options) {
+function useChart(options: ChartOptions): ApexOptions {
   const theme = useTheme();
 
-  const baseOptions = {
+  const baseOptions: ApexOptions = {
     colors: [
       theme.palette.primary.main,
       theme.palette.warning.main,
@@ -68,9 +72,9 @@ function useChart(options) {
       theme.palette.error.main,
       theme.palette.success.main,
       theme.palette.warning.dark,
-      theme.palette.success.darker,
+      // theme.palette.success.darker,
       theme.palette.info.dark,
-      theme.palette.info.darker,
+      // theme.palette.info.darker,
     ],
     chart: {
       toolbar: { show: false },
@@ -96,7 +100,7 @@ function useChart(options) {
       opacity: 1,
       gradient: {
         type: 'vertical',
-        shadeIntensity: 0,
+        shadeIntensity: 20,
         opacityFrom: 0.4,
         opacityTo: 0,
         stops: [0, 100],
@@ -174,7 +178,7 @@ function useChart(options) {
 }
 
 export default function Page(): React.JSX.Element {
-  const [transactionMethod, setTransactionMethod] = useState([]);
+  const [transactionMethod, setTransactionMethod] = useState<any[]>([]);
   const theme = useTheme();
   const chartData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -192,23 +196,24 @@ export default function Page(): React.JSX.Element {
       categories: chartData.labels,
     },
   });
-useEffect(()=>{
-  const fetchTransactionMethods = async()=>{
-    try{
+
+  useEffect(() => {
+    const fetchTransactionMethods = async () => {
+      try {
         const response = await axios.get('https://erp-dev.pesaswap.com/api/method/pesaswap.services.rest.get_total_transactions_by_method');
         console.log("Transaction Methods", response.data.message);
         setTransactionMethod(response.data.message);
-
-    } catch(err){
+      } catch (err) {
         console.log(err.message);
-    }
-};
-fetchTransactionMethods();
-},[transactionMethod])
+      }
+    };
+    fetchTransactionMethods();
+  }, []);
+
   return (
     <Grid container spacing={3}>
       <Grid lg={4} md={6} xs={12}>
-        <Traffic chartSeries={[transactionMethod.mpesa,transactionMethod.mtn,transactionMethod.iveri,12]} labels={['Mpesa', 'Momo', 'Iveri','Airtel' ]} sx={{ height: '100%' }} />
+        <Traffic chartSeries={[transactionMethod?.mpesa, transactionMethod?.mtn, transactionMethod?.iveri, 12]} labels={['Mpesa', 'Momo', 'Iveri', 'Airtel']} sx={{ height: '100%' }} />
       </Grid>
       <Grid lg={8} md={6} xs={12}>
         <Card>
@@ -217,7 +222,7 @@ fetchTransactionMethods();
             <Chart
               dir="ltr"
               type="line"
-              series={chartData.series}
+              series={chartData?.series}
               options={chartOptions}
               width="100%"
               height={364}
