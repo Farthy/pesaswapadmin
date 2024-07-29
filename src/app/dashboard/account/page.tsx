@@ -202,10 +202,10 @@ export default function Page(): React.JSX.Element {
         const response = await axios.get('https://erp-dev.pesaswap.com/api/method/pesaswap.services.rest.get_total_transactions_by_method');
         console.log("Transaction Methods", response.data.message);
         setTransactionMethod(response.data.message);
-       };
-       // catch (err) {
-      //   console.log(err.message);
-      // }
+       }
+       catch () {
+       console.log("Failed to fetch transaction methods");
+      }
     };
     fetchTransactionMethods();
   }, []);
