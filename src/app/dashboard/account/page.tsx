@@ -72,9 +72,7 @@ function useChart(options: ChartOptions): ApexOptions {
       theme.palette.error.main,
       theme.palette.success.main,
       theme.palette.warning.dark,
-      // theme.palette.success.darker,
       theme.palette.info.dark,
-      // theme.palette.info.darker,
     ],
     chart: {
       toolbar: { show: false },
