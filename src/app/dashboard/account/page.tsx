@@ -203,7 +203,7 @@ export default function Page(): React.JSX.Element {
         console.log("Transaction Methods", response.data.message);
         setTransactionMethod(response.data.message);
        }
-       catch () {
+       catch {
        console.log("Failed to fetch transaction methods");
       }
     };
