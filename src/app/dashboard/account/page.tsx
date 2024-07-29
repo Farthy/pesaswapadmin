@@ -130,10 +130,12 @@ function useChart(options: ChartOptions): ApexOptions {
       strokeColors: theme.palette.background.paper,
     },
     tooltip: {
-      theme: false,
+      theme: 'light', // or 'dark'
       x: {
         show: true,
       },
+    }
+    
     },
     legend: {
       show: true,
